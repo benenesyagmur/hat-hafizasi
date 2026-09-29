@@ -143,5 +143,5 @@ document.addEventListener('click', e => {
   const feedback = document.querySelector('.feedback'); feedback.hidden = false; feedback.className = `feedback ${correct ? 'good' : 'bad'}`; feedback.innerHTML = `<b>${correct ? 'Doğru — aynen böyle.' : 'Tekrar notu'}</b><span>${correct ? q.answer : `Doğru cevap: ${q.answer}`}</span><button class="primary" data-next>${state.index + 1 === state.deck.length ? 'Sonucu Gör' : 'Sonraki Soru →'}</button>`;
 });
 document.addEventListener('click', e => { if (!e.target.closest('[data-next]')) return; if (state.index + 1 >= state.deck.length) state.mode = 'result'; else { state.index++; state.answered = false; } render(); });
-if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js'));
+if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register(`${import.meta.env.BASE_URL}service-worker.js`));
 render();
